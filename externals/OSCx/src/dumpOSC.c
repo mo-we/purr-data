@@ -105,7 +105,14 @@ The OSC webpage is http://cnmat.cnmat.berkeley.edu/OpenSoundControl
 	#include <sys/types.h>
 	#include <sys/stat.h>
 	#include <netinet/in.h>
-	#include <rpc/rpc.h>
+	/* <rpc/rpc.h> was only needed for TRUE/FALSE; SunRPC was removed
+	   from glibc, so define them here instead. */
+	#ifndef TRUE
+	#define TRUE 1
+	#endif
+	#ifndef FALSE
+	#define FALSE 0
+	#endif
 	#include <sys/socket.h>
 	#include <sys/un.h>
 	#include <sys/times.h>
